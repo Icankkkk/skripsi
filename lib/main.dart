@@ -1,6 +1,8 @@
 import 'package:discuss_app/config/app_color.dart';
 import 'package:discuss_app/config/app_route.dart';
+import 'package:discuss_app/controller/c_user.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,17 +15,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: AppColor.primary,
-        colorScheme: const ColorScheme.light().copyWith(
-          primary: AppColor.primary,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CUser()),
+      ],
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primaryColor: AppColor.primary,
+          colorScheme: const ColorScheme.light().copyWith(
+            primary: AppColor.primary,
+          ),
+          useMaterial3: true,
         ),
-        useMaterial3: true,
+        routerConfig: AppRoute.routerConfig,
       ),
-      routerConfig: AppRoute.routerConfig,
     );
   }
 }
