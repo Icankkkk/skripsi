@@ -1,5 +1,6 @@
 import 'package:discuss_app/config/app_color.dart';
 import 'package:discuss_app/config/app_route.dart';
+import 'package:discuss_app/controller/c_home.dart';
 import 'package:discuss_app/controller/c_user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => CUser()),
+        ChangeNotifierProvider(create: (_) => CHome()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
