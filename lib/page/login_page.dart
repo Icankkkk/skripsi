@@ -73,27 +73,23 @@ class LoginPage extends StatelessWidget {
                       padding: const EdgeInsets.all(16),
                       child: Column(
                         children: [
-                          const Text(
-                            "Login Dulu!",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
-                              color: Color(0xff048ADE),
-                            ),
-                          ),
+                          DView.textTitle('Login Dulu!'),
                           DView.spaceHeight(8),
                           const Divider(),
                           DView.spaceHeight(4),
                           DInput(
                             controller: controllerUsername,
                             title: "Username",
-                            spaceTitle: 4,
+                            validator: (value) =>
+                                value == '' ? "Username gaboleh kosong" : null,
                           ),
                           DView.spaceHeight(),
-                          DInput(
+                          DInputPassword(
                             controller: controllerPassword,
                             title: "Password",
-                            spaceTitle: 4,
+                            obsecureCharacter: '*',
+                            validator: (value) =>
+                                value == '' ? "Password gaboleh kosong" : null,
                           ),
                           DView.spaceHeight(20),
                           SizedBox(
@@ -142,7 +138,7 @@ class LoginPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
