@@ -8,6 +8,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DView.appBarCenter('Home'),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {},
+          child: const Text('Logout'),
+        ),
+      ),
     );
   }
 }

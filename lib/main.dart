@@ -23,13 +23,16 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
         theme: ThemeData(
           primaryColor: AppColor.primary,
           colorScheme: const ColorScheme.light().copyWith(
             primary: AppColor.primary,
+            secondary: AppColor.primary,
           ),
-          useMaterial3: true,
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: AppColor.primary,
+            foregroundColor: Colors.white,
+          ),
         ),
         routerConfig: AppRoute.routerConfig,
       ),

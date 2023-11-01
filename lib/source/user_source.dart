@@ -24,7 +24,7 @@ class UserSource {
   }
 
   static Future<Map> login(String username, String pasword) async {
-    String url = '${Api.user}/register.php';
+    String url = '${Api.user}/login.php';
     try {
       Response response = await Client().post(Uri.parse(url), body: {
         'username': username,
