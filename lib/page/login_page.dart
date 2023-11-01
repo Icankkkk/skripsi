@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
 
         DInfo.dialogSuccess(context, 'Berhasil Login');
         DInfo.closeDialog(context, actionAfterClose: () {
-          // context.go(AppRoute.home);
+          context.go(AppRoute.home);
         });
       } else {
         DInfo.snackBarError(context, 'Gagal Login');
