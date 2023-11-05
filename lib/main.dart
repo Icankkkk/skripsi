@@ -5,6 +5,8 @@ import 'package:discuss_app/controller/c_user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'controller/c_account.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -20,6 +22,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => CUser()),
         ChangeNotifierProvider(create: (_) => CHome()),
+        ChangeNotifierProvider(create: (_) => CAccount()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

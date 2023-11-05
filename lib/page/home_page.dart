@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
       },
       {
         'icon': Icons.library_books,
-        'label': 'Feed',
+        'label': ' My Feed',
         'view': const MyTopicFragment(),
       },
       {
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
           child: menu[_.indexMenu]['view'],
         ),
         floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 24),
+          padding: const EdgeInsets.only(bottom: 10),
           child: FloatingActionButton(
             backgroundColor: Colors.white,
             onPressed: () {},
@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _.indexMenu,
           onTap: (newIndex) {
