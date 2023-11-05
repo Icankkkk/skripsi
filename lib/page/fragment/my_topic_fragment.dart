@@ -1,3 +1,4 @@
+import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
 
 class MyTopicFragment extends StatelessWidget {
@@ -5,6 +6,8 @@ class MyTopicFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(child: DView.textTitle('My Topic')),
+    );
   }
 }
