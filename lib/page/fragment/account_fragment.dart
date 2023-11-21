@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
 import 'package:discuss_app/config/app_format.dart';
@@ -6,11 +9,14 @@ import 'package:discuss_app/config/session.dart';
 import 'package:discuss_app/controller/c_account.dart';
 import 'package:discuss_app/controller/c_home.dart';
 import 'package:discuss_app/controller/c_user.dart';
+import 'package:discuss_app/source/user_source.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../../config/api.dart';
+import '../../model/user.dart';
 
 class AccountFragment extends StatelessWidget {
   const AccountFragment({super.key});
@@ -27,6 +33,37 @@ class AccountFragment extends StatelessWidget {
             context.read<CUser>().data = null;
             context.read<CHome>().indexMenu = 0;
             context.go(AppRoute.login);
+          }
+        });
+      }
+    });
+  }
+
+  updateImage(BuildContext context) {
+    ImagePicker().pickImage(source: ImageSource.gallery).then((image) {
+      if (image != null) {
+        String idUser = context.read<CUser>().data!.id;
+        String oldImage = context.read<CUser>().data!.image;
+        DInfo.dialogConfirmation(context, 'Update', 'yes to confirm')
+            .then((yes) async {
+          if (yes ?? false) {
+            String name = image.name;
+            Uint8List bytes = await image.readAsBytes();
+            UserSource.updateImage(
+              idUser,
+              oldImage,
+              name,
+              base64Encode(bytes),
+            ).then((success) {
+              if (success) {
+                User? newUser = context.read<CUser>().data!..image = name;
+                context.read<CUser>().data = newUser;
+                Session.setUser(newUser);
+                DInfo.snackBarSuccess(context, 'Success Update Image');
+              } else {
+                DInfo.snackBarSuccess(context, 'Update Image Failed');
+              }
+            });
           }
         });
       }
@@ -115,7 +152,7 @@ class AccountFragment extends StatelessWidget {
               SizedBox(
                 height: 30,
                 child: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () => updateImage(context),
                   icon: const Icon(
                     Icons.edit,
                     size: 14,

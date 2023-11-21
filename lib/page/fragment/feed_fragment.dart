@@ -7,7 +7,7 @@ class FeedFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: DView.textTitle('Feed')),
+      body: Center(child: DView.textTitle('Feed', size: 80)),
     );
   }
 }

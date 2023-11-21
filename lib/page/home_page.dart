@@ -1,9 +1,11 @@
+import 'package:discuss_app/config/app_route.dart';
 import 'package:discuss_app/controller/c_home.dart';
 import 'package:discuss_app/page/fragment/account_fragment.dart';
 import 'package:discuss_app/page/fragment/explore_fragment.dart';
 import 'package:discuss_app/page/fragment/feed_fragment.dart';
 import 'package:discuss_app/page/fragment/my_topic_fragment.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -43,7 +45,9 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 10),
           child: FloatingActionButton(
             backgroundColor: Colors.white,
-            onPressed: () {},
+            onPressed: () {
+              context.push(AppRoute.addTopic);
+            },
             mini: false,
             tooltip: 'Buat Topic Baru',
             child: const Icon(
