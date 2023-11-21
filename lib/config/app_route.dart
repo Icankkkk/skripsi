@@ -1,6 +1,8 @@
 import 'package:discuss_app/config/session.dart';
 import 'package:discuss_app/controller/c_add_topic.dart';
+import 'package:discuss_app/model/topic.dart';
 import 'package:discuss_app/page/add_topic.dart';
+import 'package:discuss_app/page/detail_topic_page.dart';
 import 'package:discuss_app/page/error_page.dart';
 import 'package:discuss_app/page/home_page.dart';
 import 'package:discuss_app/page/login_page.dart';
@@ -60,6 +62,11 @@ class AppRoute {
           create: (_) => CAddTopic(),
           child: AddTopic(),
         ),
+      ),
+      GoRoute(
+        path: detailTopic,
+        builder: (context, state) =>
+            DetailTopicPage(topic: state.extra as Topic),
       ),
     ],
   );
