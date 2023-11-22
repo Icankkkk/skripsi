@@ -44,6 +44,10 @@ class MyTopicFragment extends StatelessWidget {
                 itemBuilder: (context, index) {
                   Topic topic = _.topics[index];
                   return ListTile(
+                    onTap: () => context.push(
+                      AppRoute.detailTopic,
+                      extra: topic..user = user,
+                    ),
                     leading: CircleAvatar(
                       radius: 16,
                       child: Text('${index + 1}'),
@@ -62,15 +66,27 @@ class MyTopicFragment extends StatelessWidget {
                     trailing: PopupMenuButton(
                       onSelected: (value) {
                         if (value == 'detail') {
-                          context.push(AppRoute.detailTopic,
-                              extra: topic..user = user);
+                          context.push(
+                            AppRoute.detailTopic,
+                            extra: topic..user = user,
+                          );
                         }
                         if (value == 'update') {
-                          context.push(AppRoute.updateTopic,
-                              extra: topic..user = user);
+                          context.push(
+                            AppRoute.updateTopic,
+                            extra: topic..user = user,
+                          );
                         }
                         if (value == 'delete') {
-                          // deleteTopic(context, topic);
+                          DInfo.dialogConfirmation(
+                            context,
+                            'Delete Topic',
+                            'Yes to confirm',
+                          ).then((yes) {
+                            if (yes ?? false) {
+                              deleteTopic(context, topic);
+                            }
+                          });
                         }
                       },
                       itemBuilder: (context) => [

@@ -103,11 +103,13 @@ class DetailTopicPage extends StatelessWidget {
                               onClick: () => Navigator.pop(contexDialog),
                               child: const Icon(Icons.clear),
                             ),
-                            DView.spaceHeight(20),
-                            InteractiveViewer(
-                              child: Image.network(
-                                '${Api.imageTopic}/$e',
-                                fit: BoxFit.contain,
+                            DView.spaceHeight(10),
+                            Expanded(
+                              child: InteractiveViewer(
+                                child: Image.network(
+                                  '${Api.imageTopic}/$e',
+                                  fit: BoxFit.contain,
+                                ),
                               ),
                             ),
                           ],
