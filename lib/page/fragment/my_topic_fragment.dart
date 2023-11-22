@@ -66,8 +66,8 @@ class MyTopicFragment extends StatelessWidget {
                               extra: topic..user = user);
                         }
                         if (value == 'update') {
-                          // TODO: context.push(AppRoute.updateTopic,
-                          //     extra: topic..user = user);
+                          context.push(AppRoute.updateTopic,
+                              extra: topic..user = user);
                         }
                         if (value == 'delete') {
                           // deleteTopic(context, topic);

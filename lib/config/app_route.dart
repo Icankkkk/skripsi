@@ -6,6 +6,7 @@ import 'package:discuss_app/page/detail_topic_page.dart';
 import 'package:discuss_app/page/error_page.dart';
 import 'package:discuss_app/page/home_page.dart';
 import 'package:discuss_app/page/login_page.dart';
+import 'package:discuss_app/page/update_topic_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -67,6 +68,11 @@ class AppRoute {
         path: detailTopic,
         builder: (context, state) =>
             DetailTopicPage(topic: state.extra as Topic),
+      ),
+      GoRoute(
+        path: updateTopic,
+        builder: (context, state) =>
+            UpdateTopicPage(topic: state.extra as Topic),
       ),
     ],
   );
