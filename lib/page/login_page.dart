@@ -1,7 +1,6 @@
 import 'package:d_info/d_info.dart';
 import 'package:d_input/d_input.dart';
 import 'package:d_view/d_view.dart';
-import 'package:discuss_app/config/app_asset.dart';
 import 'package:discuss_app/config/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -58,10 +57,6 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   DView.spaceHeight(90),
-                  Image.asset(
-                    AppAsset.logo,
-                    width: 280,
-                  ),
                   Card(
                     margin: const EdgeInsets.all(32),
                     elevation: 8,
@@ -73,7 +68,7 @@ class LoginPage extends StatelessWidget {
                       padding: const EdgeInsets.all(16),
                       child: Column(
                         children: [
-                          DView.textTitle('Login Dulu!'),
+                          DView.textTitle('Login to App'),
                           DView.spaceHeight(8),
                           const Divider(),
                           DView.spaceHeight(4),

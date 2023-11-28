@@ -1,5 +1,6 @@
 import 'package:discuss_app/config/session.dart';
 import 'package:discuss_app/controller/c_add_topic.dart';
+import 'package:discuss_app/controller/c_search.dart';
 import 'package:discuss_app/model/topic.dart';
 import 'package:discuss_app/page/add_topic.dart';
 import 'package:discuss_app/page/detail_topic_page.dart';
@@ -12,6 +13,7 @@ import 'package:provider/provider.dart';
 
 import '../model/user.dart';
 import '../page/register_page.dart';
+import '../page/search_page.dart';
 
 class AppRoute {
   static const home = '/';
@@ -74,6 +76,13 @@ class AppRoute {
         builder: (context, state) =>
             UpdateTopicPage(topic: state.extra as Topic),
       ),
+      GoRoute(
+        path: search,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CSearch(),
+          child: const SearchPage(),
+        ),
+      )
     ],
   );
 }

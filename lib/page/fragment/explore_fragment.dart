@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:d_button/d_button.dart';
 import 'package:d_view/d_view.dart';
 import 'package:discuss_app/config/app_color.dart';
+import 'package:discuss_app/config/app_route.dart';
 import 'package:discuss_app/controller/c_explore.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/c_user.dart';
@@ -32,7 +34,7 @@ class ExploreFragment extends StatelessWidget {
               DButtonElevation(
                 mainColor: AppColor.primary,
                 onClick: () {
-                  // TODO: push to search
+                  context.push(AppRoute.search);
                 },
                 height: 36,
                 width: 36,
