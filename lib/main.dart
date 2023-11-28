@@ -1,6 +1,7 @@
 import 'package:discuss_app/config/app_color.dart';
 import 'package:discuss_app/config/app_route.dart';
 import 'package:discuss_app/config/session.dart';
+import 'package:discuss_app/controller/c_explore.dart';
 import 'package:discuss_app/controller/c_feed.dart';
 import 'package:discuss_app/controller/c_home.dart';
 import 'package:discuss_app/controller/c_my_topic.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CFedd()),
         ChangeNotifierProvider(create: (_) => CAccount()),
         ChangeNotifierProvider(create: (_) => CMyTopic()),
+        ChangeNotifierProvider(create: (_) => CExplore()),
       ],
       builder: (context, child) {
         Session.getUser().then((user) {

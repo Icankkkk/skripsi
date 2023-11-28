@@ -96,7 +96,7 @@ class TopicSource {
   static Future<List<Topic>> readExplore() async {
     String url = '${Api.topic}/read_explore.php';
     try {
-      Response response = await Client().post(Uri.parse(url));
+      Response response = await Client().get(Uri.parse(url));
       DMethod.printTitle('Topic Source - readExplore', response.body);
       Map responseBody = jsonDecode(response.body);
       if (responseBody['success']) {
