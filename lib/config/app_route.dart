@@ -1,5 +1,6 @@
 import 'package:discuss_app/config/session.dart';
 import 'package:discuss_app/controller/c_add_topic.dart';
+import 'package:discuss_app/controller/c_profile.dart';
 import 'package:discuss_app/controller/c_search.dart';
 import 'package:discuss_app/model/topic.dart';
 import 'package:discuss_app/page/add_topic.dart';
@@ -7,10 +8,12 @@ import 'package:discuss_app/page/detail_topic_page.dart';
 import 'package:discuss_app/page/error_page.dart';
 import 'package:discuss_app/page/home_page.dart';
 import 'package:discuss_app/page/login_page.dart';
+import 'package:discuss_app/page/profile_page.dart';
 import 'package:discuss_app/page/update_topic_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../controller/c_follower.dart';
 import '../model/user.dart';
 import '../page/register_page.dart';
 import '../page/search_page.dart';
@@ -82,7 +85,20 @@ class AppRoute {
           create: (_) => CSearch(),
           child: const SearchPage(),
         ),
-      )
+      ),
+      GoRoute(
+        path: profile,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CProfile(),
+          child: ProfilePage(user: state.extra as User),
+        ),
+      ),
+      GoRoute(
+        path: follower,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CFollower(),
+        ),
+      ),
     ],
   );
 }

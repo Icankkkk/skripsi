@@ -3,13 +3,14 @@ import 'dart:typed_data';
 
 import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
-import 'package:discuss_app/config/app_format.dart';
 import 'package:discuss_app/config/app_route.dart';
 import 'package:discuss_app/config/session.dart';
 import 'package:discuss_app/controller/c_account.dart';
 import 'package:discuss_app/controller/c_home.dart';
 import 'package:discuss_app/controller/c_user.dart';
 import 'package:discuss_app/source/user_source.dart';
+import 'package:discuss_app/widget/item_divider.dart';
+import 'package:discuss_app/widget/item_stat.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
@@ -175,24 +176,33 @@ class AccountFragment extends StatelessWidget {
                     child: Row(
                       children: [
                         Expanded(
-                          child: itemStat('Topic', _.stat['topic']),
+                          child: ItemStat(
+                            title: 'Topic',
+                            value: _.stat['topic'],
+                          ),
                         ),
-                        myDivider(),
+                        const ItemDivider(),
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
                               //TODO: context.push(AppRoute.follower)
                             },
-                            child: itemStat('Follower', _.stat['follower']),
+                            child: ItemStat(
+                              title: 'Follower',
+                              value: _.stat['follower'],
+                            ),
                           ),
                         ),
-                        myDivider(),
+                        const ItemDivider(),
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
                               //TODO: context.push(AppRoute.following)
                             },
-                            child: itemStat('Following', _.stat['following']),
+                            child: ItemStat(
+                              title: 'Following',
+                              value: _.stat['following'],
+                            ),
                           ),
                         ),
                       ],
@@ -220,24 +230,6 @@ class AccountFragment extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget myDivider() {
-    return Container(
-      color: Colors.grey,
-      height: 30,
-      width: 0.5,
-    );
-  }
-
-  Widget itemStat(String title, num value) {
-    return Column(
-      children: [
-        Text(title),
-        DView.spaceHeight(4),
-        DView.textTitle(AppFormat.infoNumber(value.toDouble())),
-      ],
     );
   }
 }
