@@ -185,7 +185,8 @@ class AccountFragment extends StatelessWidget {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
-                              //TODO: context.push(AppRoute.follower)
+                              context.push(AppRoute.follower,
+                                  extra: context.read<CUser>().data);
                             },
                             child: ItemStat(
                               title: 'Follower',
@@ -197,7 +198,8 @@ class AccountFragment extends StatelessWidget {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
-                              //TODO: context.push(AppRoute.following)
+                              context.push(AppRoute.following,
+                                  extra: context.read<CUser>().data);
                             },
                             child: ItemStat(
                               title: 'Following',
