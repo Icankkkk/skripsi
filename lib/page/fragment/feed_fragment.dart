@@ -4,10 +4,9 @@ import 'package:d_view/d_view.dart';
 import 'package:discuss_app/controller/c_feed.dart';
 import 'package:discuss_app/controller/c_user.dart';
 import 'package:discuss_app/model/topic.dart';
+import 'package:discuss_app/widget/item_topic.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../widget/item_topic.dart';
 
 class FeedFragment extends StatelessWidget {
   const FeedFragment({super.key});
@@ -37,6 +36,7 @@ class FeedFragment extends StatelessWidget {
                 );
               }
               return ListView.builder(
+                padding: const EdgeInsets.all(0),
                 itemCount: _.topics.length,
                 itemBuilder: (context, index) {
                   Topic topic = _.topics[index];
@@ -49,7 +49,6 @@ class FeedFragment extends StatelessWidget {
                       index == _.topics.length - 1 ? 30 : 8,
                     ),
                     child: ItemTopic(topic: topic, images: images),
-                    // DView.empty('Ngetes feed'),
                   );
                 },
               );
