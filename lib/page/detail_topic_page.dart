@@ -6,6 +6,9 @@ import 'package:discuss_app/config/api.dart';
 import 'package:discuss_app/config/app_format.dart';
 import 'package:discuss_app/model/topic.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../config/app_route.dart';
 
 class DetailTopicPage extends StatelessWidget {
   const DetailTopicPage({super.key, required this.topic});
@@ -42,7 +45,7 @@ class DetailTopicPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: DButtonElevation(
           onClick: () {
-            // TODO: context.push(AppRoute.comment, extra: topic);
+            context.push(AppRoute.comment, extra: topic);
           },
           height: 40,
           mainColor: Theme.of(context).primaryColor,

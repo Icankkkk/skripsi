@@ -1,10 +1,12 @@
 import 'package:discuss_app/config/session.dart';
 import 'package:discuss_app/controller/c_add_topic.dart';
+import 'package:discuss_app/controller/c_comment.dart';
 import 'package:discuss_app/controller/c_following.dart';
 import 'package:discuss_app/controller/c_profile.dart';
 import 'package:discuss_app/controller/c_search.dart';
 import 'package:discuss_app/model/topic.dart';
 import 'package:discuss_app/page/add_topic.dart';
+import 'package:discuss_app/page/comment_page.dart';
 import 'package:discuss_app/page/detail_topic_page.dart';
 import 'package:discuss_app/page/error_page.dart';
 import 'package:discuss_app/page/follower_page.dart';
@@ -108,6 +110,13 @@ class AppRoute {
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CFollowing(),
           child: FollowingPage(user: state.extra as User),
+        ),
+      ),
+      GoRoute(
+        path: comment,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CComment(),
+          child: CommentPage(topic: state.extra as Topic),
         ),
       ),
     ],

@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
       },
       {
         'icon': Icons.library_books,
-        'label': ' My Feed',
+        'label': ' My Topic',
         'view': const MyTopicFragment(),
       },
       {
