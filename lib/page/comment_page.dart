@@ -1,4 +1,5 @@
 import 'package:d_button/d_button.dart';
+import 'package:d_info/d_info.dart';
 import 'package:d_view/d_view.dart';
 import 'package:discuss_app/config/api.dart';
 import 'package:discuss_app/config/app_color.dart';
@@ -180,14 +181,23 @@ class CommentPage extends StatelessWidget {
                                       DView.spaceWidth(12),
                                     if (cUser.data!.id == comment.fromIdUser)
                                       GestureDetector(
-                                        onTap: () {
-                                          CommentSource.delete(
-                                                  comment.id, comment.image)
-                                              .then((success) {
+                                        onTap: () async {
+                                          bool? yes =
+                                              await DInfo.dialogConfirmation(
+                                            context,
+                                            'Delete comment',
+                                            'Yes to confirm',
+                                          );
+                                          if (yes ?? false) {
+                                            bool success =
+                                                await CommentSource.delete(
+                                              comment.id,
+                                              comment.image,
+                                            );
                                             if (success) {
                                               cComment.setComments(topic);
                                             }
-                                          });
+                                          }
                                         },
                                         child: const Row(
                                           children: [
@@ -198,7 +208,7 @@ class CommentPage extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                      )
+                                      ),
                                   ],
                                 ),
                               )

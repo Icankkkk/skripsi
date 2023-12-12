@@ -10,11 +10,13 @@ import 'package:image_picker/image_picker.dart';
 class CComment extends ChangeNotifier {
   List<Comment> _comments = [];
   List<Comment> get comments => _comments;
+
   setComments(Topic topic) async {
     _image = '';
     _imageBase64code = '';
     _comments = await CommentSource.read(topic.id);
     setReplyTo(topic.user!);
+
     notifyListeners();
   }
 
